@@ -16,8 +16,7 @@ class PagesController < ApplicationController
                     image: ActionController::Base.helpers.asset_path("hammock-art.jpg"),
                   },
                   twitter: {
-                    card: "Alex Younger - My Space on the Internet",
-                    site: "@AlextheYounga",
+                    card: "Alex Younger - My Space on the Internet"
                   }
   end
 
@@ -36,8 +35,7 @@ class PagesController < ApplicationController
                     image: ActionController::Base.helpers.asset_path("headshot_square.jpg"),
                   },
                   twitter: {
-                    card: "Alex Younger - Web Developer, Data Scientist, Investor, Entrepreneur",
-                    site: "@AlextheYounga",
+                    card: "Alex Younger - Web Developer, Data Scientist, Investor, Entrepreneur",                    
                   }
                   
     render layout: "landingpage"

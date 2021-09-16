@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?, :master_logged_in?
 
   $linkedin = 'https://www.linkedin.com/in/alexyounger/'
-  $facebook = 'https://www.facebook.com/alex.younger.7'
-  $twitter = 'https://twitter.com/AlextheYounga'
   $github = 'https://github.com/AlextheYounga'
   $codepen = 'https://codepen.io/alextheyounger/'
   $medium = 'https://medium.com/@AlextheYounger'
