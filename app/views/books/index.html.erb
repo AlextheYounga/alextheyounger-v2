@@ -5,15 +5,9 @@
       <li class="text-center p-2 border-r border-gray-300">
         <button id="showall" class="normal-font text-sm text-purple-900hover:text-purple-300">Show All</button>
       </li>
-      <% if @categories.any?
-               then %>
+      <% if @categories.any? then %>
         <% @categories.each do |category| %>
-          <%if (category == @categories.last) %>
-            <li class="text-center p-2">
-              <button id="misc" class="normal-font text-sm text-purple-900hover:text-purple-300">Miscellaneous</button>
-            </li>
-            <% break %><% end %>
-            <li class="text-center p-2 border-r border-gray-300">
+            <li class="text-center p-2 <% if category != @categories.last %> border-r border-gray-300 <% end %>">
               <button id="<%= category.html_selector %>" class="normal-font text-sm text-purple-900hover:text-purple-300"><%= category.name %></button>
             </li>
           <% end %>
@@ -30,7 +24,11 @@
           <% if (book.covers.attached? || !book.image_address.nil?) %>
             <div class="<%= book.book_category.html_selector %> cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative">
               <% if master_logged_in? %>
-                <a href="<%= edit_book_path(book) %>" class="absolute bg-white edit-book-link no-underline px-3 py-2 right-0 rounded-b shadow text-blue-600 top-0 z-10 hover:underline">Edit</a>
+			  <p class="absolute left-16 top-0"><%= book.position %></p>
+                <div class="absolute right-0 top-0 z-10">
+                  <a href="<%= edit_book_path(book) %>" class="bg-white edit-book-link no-underline px-3 py-2 rounded-b shadow text-blue-600 hover:underline">Edit</a>
+                  <%= link_to "Destroy", book_path(book), method: :delete, data: {confirm: "Are you sure you want to delete the book?"}, class: "bg-white edit-book-link no-underline px-3 py-2 rounded-b shadow text-red-600 hover:underline" %>
+                </div>
               <%end %>
               <a href="<%= book.book_link %>" target="_blank" rel="nofollow" class="no-underline">
                 <% if (book.covers.attached?) %>

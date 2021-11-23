@@ -4,12 +4,12 @@
     <% @categories.each do |category| %>
       <div class="bg-white flex justify-between container mx-auto py-1 px-4 rounded-lg shadow-lg text-center w-1/2 my-2">
         <div class="flex justify-between w-1/4">
-          <%= link_to "#{category.name}", category_path(category), class: "burgandy no-underline text-lg self-center" %>
+          <%= link_to "#{category.name}", book_category_path(category), class: "burgandy no-underline text-lg self-center" %>
           <p class="self-center"><%= pluralize(category.books.count, "book") %></p>
         </div>
         <div class="w-1/2">
           <% if master_logged_in? %>
-            <small><%= link_to "Edit", edit_category_path(category), class: "block hover:text-green-900 mx-auto my-4 no-underline text-green-800w-48 text-center" %></small>
+            <small><%= link_to "Edit", edit_book_category_path(category), class: "block hover:text-green-900 mx-auto my-4 no-underline text-green-800w-48 text-center" %></small>
           <% else %>
             <%= nil %>
           <% end %>

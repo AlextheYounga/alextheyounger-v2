@@ -5,10 +5,10 @@ class BookCategoriesController < ApplicationController
   end
 
   def create
-    @category = BookCategory.new(category_params)
+    @category = BookCategory.new(book_category_params)
     if @category.save
       flash[:success] = "Category was successfully created"
-      redirect_to categories_path
+      redirect_to book_categories_path
     else
       render "new"
     end
@@ -24,15 +24,19 @@ class BookCategoriesController < ApplicationController
 
   def update
     @category = BookCategory.find(params[:id])
-    if @category.update(category_params)
+    if @category.update(book_category_params)
       flash[:success] = "Name was successfully updated"
-      redirect_to book_categories(@category)
+      redirect_to book_categories_path
     else
       render "edit"
     end
   end
   
   private
+  def book_category_params
+	params.require(:book_category).permit(:name, :html_selector)
+  end
+
   def restrict
     if not master_logged_in?
       redirect_to root_path
