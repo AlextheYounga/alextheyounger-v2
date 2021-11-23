@@ -1,4 +1,3 @@
-
 var terrainElement = document.getElementById("terrain");
 if (typeof (terrainElement) != 'undefined' && terrainElement != null) {
 
@@ -26,6 +25,7 @@ if (typeof (terrainElement) != 'undefined' && terrainElement != null) {
     console.log("seed: " + seed);
 
     function random() {
+
         /*  
             This is a basic Lehmer random number generator.
             48271 is the recommended multiplicand for the Lehmer random number generator. In 1993, this number was 
@@ -87,6 +87,7 @@ if (typeof (terrainElement) != 'undefined' && terrainElement != null) {
     }
 
     var draw = function draw(w) {
+
         var r = 200 / size;
         pen = false;
 
@@ -104,4 +105,5 @@ if (typeof (terrainElement) != 'undefined' && terrainElement != null) {
         }
         return w < size;
     }
+
 }
