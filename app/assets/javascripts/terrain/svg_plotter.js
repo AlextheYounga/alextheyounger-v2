@@ -499,8 +499,7 @@ var SVG = function SVG(opt) {
 
 	var render = function render() {
 		var start = performance.now();
-		var run;
-
+		var run;		
 		do {
 			run = draw(iter++);
 		} while (run === true && performance.now() - start < cpuTime);
@@ -512,6 +511,11 @@ var SVG = function SVG(opt) {
 			// target = outside;
 			// target.innerHTML = "";
 			polyline = [];
+		}
+		// Program is finished when run is false.
+		// The run variable keeps track of whether the program is still drawing.
+		if (run === false) {
+			reveal() //Running reveal function on homepage. 
 		}
 	}; //////////////////////////////////////////////////////
 
@@ -1003,6 +1007,7 @@ var SVG = function SVG(opt) {
 	}(); //////////////////////////////////////////////////////
 	
 	var imageData = function imageData(img, width, height) {
+
 		if (width === void 0) {
 			width = 0;
 		}
