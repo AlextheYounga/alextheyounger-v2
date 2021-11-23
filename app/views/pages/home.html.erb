@@ -85,7 +85,9 @@
       }
 
       $('#generator-notice').fadeOut('slow');
-      $('#generate-new').fadeIn('slow');
+	  if (view != 'mobile') {
+      	$('#generate-new').fadeIn('slow');
+	  }
       $('footer').removeClass('hidden');
 
       var flky = new Flickity('.projects-carousel', {
