@@ -108,5 +108,18 @@
       });
       $('.carousel-cell').addClass('h-full');
     }
+
+    function terrainFinished() {
+      reveal()
+    }
+
+    function waitForTerrain() {
+      if (typeof terrainLoaded === "undefined" || terrainLoaded === false) {
+        setTimeout(waitForTerrain, 200);
+        return
+      }
+      terrainFinished()
+    }
+    waitForTerrain()
   </script>
 <% end %>

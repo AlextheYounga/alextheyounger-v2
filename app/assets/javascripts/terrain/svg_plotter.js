@@ -1,5 +1,6 @@
 "use strict";
 
+var terrainLoaded = false; // global terrain variable
 function _createForOfIteratorHelperLoose(o, allowArrayLike) {
 	var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
 		if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
@@ -515,8 +516,9 @@ var SVG = function SVG(opt) {
 		// Program is finished when run is false.
 		// The run variable keeps track of whether the program is still drawing.
 		if (run === false) {
-			reveal() //Running reveal function on homepage. 
+			terrainLoaded = true;
 		}
+
 	}; //////////////////////////////////////////////////////
 
 
