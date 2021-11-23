@@ -7,7 +7,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.order(:position)
-    @categories = BookCategory.all
+	@categories = BookCategory.order(:name)
 
     set_meta_tags title: "Reading List",
                   site: "alextheyounger.me",
