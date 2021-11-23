@@ -1,5 +1,4 @@
 "use strict";
-var terrainLoaded = false;
 
 function _createForOfIteratorHelperLoose(o, allowArrayLike) {
 	var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
@@ -274,7 +273,6 @@ var SVG = function SVG(opt) {
 				this.dp.push(this.cp[i], this.cp[(i + 1) % len]);
 			}
 		};
-		// console.log('addOutline')
 
 		_proto2.draw = function draw() {
 			if (this.dp.length === 0) return;
