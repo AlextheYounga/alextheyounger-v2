@@ -9,11 +9,11 @@ class PagesController < ApplicationController
                   site: "alextheyounger.me",
                   description: "Alex Younger - My Space on the Internet",
                   reverse: true,
-                  image_src: ActionController::Base.helpers.asset_path("hammock-art.jpg"),
+                  image_src: ActionController::Base.helpers.asset_path("bridge-standing-opt.jpg"),
                   og: {
                     title: "Home",
                     url: "#{Rails.root}",
-                    image: ActionController::Base.helpers.asset_path("hammock-art.jpg"),
+                    image: ActionController::Base.helpers.asset_path("bridge-standing-opt.jpg"),
                   },
                   twitter: {
                     card: "Alex Younger - My Space on the Internet"
@@ -28,11 +28,11 @@ class PagesController < ApplicationController
                   site: "alextheyounger.me",
                   description: "Alex Younger - Web Developer, Data Scientist, Investor, Entrepreneur",
                   reverse: true,
-                  image_src: ActionController::Base.helpers.asset_path("headshot_square.jpg"),
+                  image_src: ActionController::Base.helpers.asset_path("bridge-standing-opt.jpg"),
                   og: {
                     title: "Home",
                     url: "#{Rails.root}/resume",
-                    image: ActionController::Base.helpers.asset_path("headshot_square.jpg"),
+                    image: ActionController::Base.helpers.asset_path("bridge-standing-opt.jpg"),
                   },
                   twitter: {
                     card: "Alex Younger - Web Developer, Data Scientist, Investor, Entrepreneur",                    
