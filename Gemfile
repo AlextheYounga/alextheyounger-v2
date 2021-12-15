@@ -8,6 +8,7 @@ gem 'rails', '~> 6.0.3.4'
 # Use Puma as the app server
 # gem 'activeadmin'
 
+
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
