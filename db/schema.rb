@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_050621) do
+ActiveRecord::Schema.define(version: 2021_12_15_054728) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_050621) do
     t.string "framework"
     t.text "excerpt"
     t.integer "position"
+    t.boolean "use_github", default: false
   end
 
   create_table "proposals", force: :cascade do |t|

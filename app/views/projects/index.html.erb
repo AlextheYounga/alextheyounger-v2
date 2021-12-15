@@ -23,6 +23,9 @@
                   <img src="<%= image_path("#{project.image_address}") %>" class="absolute inset-0 w-full h-full object-cover object-center" alt="<%= project.image_alt %>"/>
                 </picture>
               <% end %>
+              <% if (project.use_github?) %>
+                <img src="" class="github-image absolute inset-0 object-center" data-url="project.project_link"/>
+              <% end %>
               <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                 <% if master_logged_in? %>
                   <div class="absolute right-0 top-0 w-36 justify-between">
@@ -33,7 +36,7 @@
                 <h2 class="tracking-widest text-sm title-font font-medium text-red-500 mb-1"><%= project.framework%></h2>
                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3"><%= project.title%></h1>
                 <p class="leading-relaxed"><%= project.excerpt.present? ? project.excerpt : project.description %></p>
-                <a href="<%= project.project_link%>" class="text-red-500 inline-flex items-center">Visit
+                <a href="<%= project.project_link %>" class="text-red-500 inline-flex items-center">Visit
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                   </svg>
@@ -46,3 +49,28 @@
     </div>
   </div>
 </section>
+<% content_for :javascripts do %>
+  <script>
+    $.ajax({
+      url: 'https://github.com/AlextheYounga/vultron-js',
+      type: 'GET',
+      success: function (data) {
+        console.log(data)
+      },
+      error: function () {
+        console.log('Failed')
+      },
+    });
+
+    // if ($(".github-image").length) {
+    // $(".github-image")
+    //   .map(function () {
+    //     var url = $(this).attr('data-url')
+    //     $.get(url, function (data) {
+    //       console.log(data)
+    //     })
+    //   })
+    //   .get();
+    // }
+  </script>
+<% end %>
