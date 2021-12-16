@@ -34,12 +34,13 @@
     <p class="home-quote italic mt-28 text-sm w-full sm:mt-0 sm:text-right sm:pb-6 sm:ml-auto sm:w-2/3">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble" -Ralph Waldo Emerson</p>
     <div class="description leading-normal ml-auto normal-font mt-6">
       <p class="py-2">I build and maintain websites for an extensive list of small and large companies including
-        <a class="text-blue-600 hover:text-blue-900" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>
-        and
-        <a class="text-blue-600 hover:text-blue-900" href="https://www.intelligentoffice.com/">Intelligent Office.</a>
-      </p>
-      <p class="py-2">I am currently starting a side business called Hazlitt Tech LLC, specializing in financial market data and accounting software.</p>
-      <p class="py-2">I consult businesses on best practices for Google Ad Campaigns, Analytics, and content marketing techniques.</p>
+        <a class="text-blue-600 hover:text-blue-900" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>, 
+        <a class="text-blue-600 hover:text-blue-900" href="https://www.intelligentoffice.com/">Intelligent Office</a>, and 
+        <a class="text-blue-600 hover:text-blue-900" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
+      </p>      
+      <p class="py-2">I am currently building a side business called Hazlitt LLC, specializing in financial market data and accounting software. 
+      My <a class="text-blue-600 hover:text-blue-900" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
+      <p class="py-2">I built an awesome MVC Electron-based framework for building desktop apps called <a class="text-blue-600 hover:text-blue-900" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.</p>
       <p class="py-2">Check out my latest
         <a href="<%= projects_path %>" class="text-blue-600 hover:text-blue-900">projects</a>.</p>
     </div>
@@ -122,7 +123,7 @@
 
     function waitForTerrain() {
       if (typeof terrainLoaded === "undefined" || terrainLoaded === false) {
-        setTimeout(waitForTerrain, 700);
+        setTimeout(waitForTerrain, 400);
         return
       }
       terrainFinished()

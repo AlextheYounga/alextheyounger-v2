@@ -21,10 +21,12 @@
         <div class="w-full flex flex-wrap-reverse">
           <div class="w-full sm:w-7/12">
             <p class="mb-6 font-light">I love learning, I love complexity, and I love buildings things.</p>
-            <p class="mb-6 font-light">I'm the Co-Founder of Purposals LLC, an online, business proposals SaaS that will be launching soon. And I'm the Founder of Hazlitt Tech LLC, which focuses on financial markets research and accounting software.</p>
+            <p class="mb-6 font-light">I'm the Founder of Hazlitt LLC, which focuses on financial markets research and accounting software. I'm the Co-Founder of Purposals LLC, an online, business proposals SaaS that I am trying to launch.</p>
+            <p class="mb-6 font-light">I built an awesome MVC Electron-based framework for building desktop apps called
+              <a class="text-indigo-600 hover:text-indigo-900" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.</p>
             <p class="font-light">If I have reached out to you regarding employment, it is because you have met my two conditions:</p>
             <ol class="conditions italic font tracking-normal pl-12 my-4">
-              <li class="list-decimal mb-4">I truly believe in your company's mission and I believe what you're setting out to do is good for humanity. And I want to help you do it.</li>
+              <li class="list-decimal mb-4">I believe in your company's mission and I believe what you're setting out to do is good for humanity. And I want to help you do it.</li>
               <li class="list-decimal mb-8">I believe working for you will allow me the opportunity to grow/learn exponentially.</li>
             </ol>
           </div>
@@ -225,9 +227,12 @@
       <div class="container px-5 py-24 mx-auto flex flex-wrap">
         <h2 class="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-1/5">Projects</h2>
         <div class="w-full mt-4 md:w-3/5 md:mt-0 md:pl-6">
-          <p class="leading-7 pb-2 text-base">I build and maintain websites for an extensive list of small and large companies. I am currently building a side-business startup called Hazlitt Tech LLC that specializes in scientific financial data and personal accounting software. If you want to see some more cool things I've built, check out my
-            <a href="<%#= root_path %>" class="text-indigo-600">website</a>.
+          <p class="leading-7 pb-2 text-base">I build and maintain websites for an extensive list of small and large companies. I am currently building a side-business startup called Hazlitt LLC that specializes in scientific financial data and personal accounting software.
           </p>
+          <p class="py-2">I built an awesome MVC Electron-based framework for building desktop apps called
+            <a class="text-indigo-600 hover:text-indigo-900" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.</p>
+          <p class="py-2">If you want to see some more cool things I've built, check out my
+            <a href="<%= root_path %>" class="text-indigo-600">website</a>.</p>
           <p class="leading-7 text-base">Here are some of the clients I've worked for, from ongoing maintenance to building from the ground up.</p>
         </div>
       </div>
@@ -248,13 +253,14 @@
 
           <div class="project-img md:p-2 p-1 lg:w-1/2 relative">
             <picture>
-              <img src="https://opengraph.githubassets.com/73871b3f60967f9aa541cb130b8afb349fd118e5e95abba7fc0e45abfa87acf9/AlextheYounga/vix-vol-calculator" class="w-full object-cover h-full object-center block project-img rounded border border-gray-700" alt="alex younger developer marketing about me"/>
+              <source srcset="<%= image_path('izoox.jpg.webp') %>" type="image/webp">
+              <source srcset="<%= image_path('izoox.jpg') %>" type="image/jpg">
+              <img src="<%= image_path('izoox.jpg') %>" class="w-full object-cover h-full object-center block rounded border border-gray-700" alt="alex younger developer marketing about me"/>
             </picture>
             <div class="absolute description left-0 pr-2 right-0 text-center force-vertical-align">
-              <p class="text-white w-full">Vix Volatility Calculator</p>
-              <p class="text-indigo-300 w-full block text-sm mb-2">Python</p>
-              <small class="text-white w-full block mb-2">Run the VIX on any stock.</small>
-              <a class="bg-indigo-600 font-semibold hover:bg-indigo-800 px-4 py-2 rounded text-gray-200 text-xs" href="https://github.com/AlextheYounga/vix-vol-calculator/" target="_blank" rel="nofollow">Visit</a>
+              <p class="text-white w-full">Izoox LLC</p>
+              <p class="text-indigo-300 w-full block text-sm mb-2">PHP Laravel</p>
+              <a class="bg-indigo-600 font-semibold hover:bg-indigo-800 px-4 py-2 rounded text-gray-200 text-xs" href="https://www.izoox.com" target="_blank" rel="nofollow">Visit</a>
             </div>
           </div>
 
@@ -415,7 +421,7 @@
 
         <p class="leading-8 text-base pb-2">I love dark, goofy comedy (RIP Norm MacDonald), I love long philosophical conversations, and I love the process of learning.</p>
         <p class="leading-8 text-base pb-2">My favorite movie is
-          <i>The Big Lebowski</i>. I've jumped out of airplanes, parasailed off of a mountain, I'm SCUBA certified, and I've horribly failed to climb Mount Elbert like 3 times.</p>
+          <i>The Big Lebowski</i>. I've jumped out of airplanes, paraglided off a mountain, I'm SCUBA certified, and I've horribly failed to climb Mount Elbert 3 times, one of which nearly killed me.</p>
         <p class="leading-8 text-base">Here's a good way to learn about who I am: check out the books I read. Every book that has influenced my life in some way, I post to my website.</p>
         <div class="flex md:mt-4 mt-6">
           <a href="<%=books_path %>" class="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded">Reading List</a>
@@ -428,7 +434,7 @@
     <div class="container mx-auto">
       <p class="block normal-font text-center text-sm">
         No copyright, take what you want.
-        <a href="https://alextheyounger.me" class="text-indigo-600">alexyounger.me</a>
+        <a href="https://alextheyounger.me" class="text-indigo-600">alextheyounger.me</a>
         by Alex Younger. This site was built with Ruby on Rails and TailwindCSS.
       </p>
       <p class="block normal-font text-center text-sm">Particles animation adapted from
