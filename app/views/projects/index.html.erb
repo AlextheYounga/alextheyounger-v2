@@ -10,21 +10,24 @@
         <% @projects.each do |project| %>
           <div class="lg:w-1/3 sm:w-1/2 p-4">
             <div class="flex relative border">
-              <% if (project.screens.attached?) %>
+              <% if (project.image_url?) %>
                 <picture>
-                  <source srcset="<%= project.get_webp_attachment %>" type="image/webp">
-                  <source srcset="<%= project.get_jpeg_attachment %>" type="image/jpg">
-                  <img src="<%= project.get_jpeg_attachment %>" class="absolute inset-0 w-full h-full object-cover object-center" alt="<%= project.image_alt %>"/>
+                  <img src="<%= project.image_url %>" class="github-image absolute inset-0 object-center object-cover"/>
                 </picture>
               <% else %>
-                <picture>
-                  <source srcset="<%= image_path("#{project.image_address}.webp") %>" type="image/webp">
-                  <source srcset="<%= image_path("#{project.image_address}") %>" type="image/jpg">
-                  <img src="<%= image_path("#{project.image_address}") %>" class="absolute inset-0 w-full h-full object-cover object-center" alt="<%= project.image_alt %>"/>
-                </picture>
-              <% end %>
-              <% if (project.use_github?) %>
-                <img src="" class="github-image absolute inset-0 object-center" data-url="project.project_link"/>
+                <% if (project.screens.attached?) %>
+                  <picture>
+                    <source srcset="<%= project.get_webp_attachment %>" type="image/webp">
+                    <source srcset="<%= project.get_jpeg_attachment %>" type="image/jpg">
+                    <img src="<%= project.get_jpeg_attachment %>" class="absolute inset-0 w-full h-full object-cover object-center" alt="<%= project.image_alt %>"/>
+                  </picture>
+                <% else %>
+                  <picture>
+                    <source srcset="<%= image_path("#{project.image_address}.webp") %>" type="image/webp">
+                    <source srcset="<%= image_path("#{project.image_address}") %>" type="image/jpg">
+                    <img src="<%= image_path("#{project.image_address}") %>" class="absolute inset-0 w-full h-full object-cover object-center" alt="<%= project.image_alt %>"/>
+                  </picture>
+                <% end %>
               <% end %>
               <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                 <% if master_logged_in? %>
@@ -32,7 +35,7 @@
                     <a href="<%= edit_project_path(project) %>" class="bg-blue-600 edit-project-link hover:bg-blue-700 hover:underline no-underline px-3 py-2 rounded-b shadow text-white w-12">Edit</a>
                     <%= link_to "Destroy", project_path(project), method: :delete, data: {confirm: "Are you sure you want to destroy this project?"}, class: "bg-red-600 edit-project-link hover:bg-red-700 hover:underline no-underline px-3 py-2 rounded-b shadow text-white" %>
                   </div>
-                <%end %>
+                <% end %>
                 <h2 class="tracking-widest text-sm title-font font-medium text-red-500 mb-1"><%= project.framework%></h2>
                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3"><%= project.title%></h1>
                 <p class="leading-relaxed"><%= project.excerpt.present? ? project.excerpt : project.description %></p>
@@ -49,28 +52,3 @@
     </div>
   </div>
 </section>
-<% content_for :javascripts do %>
-  <script>
-    $.ajax({
-      url: 'https://github.com/AlextheYounga/vultron-js',
-      type: 'GET',
-      success: function (data) {
-        console.log(data)
-      },
-      error: function () {
-        console.log('Failed')
-      },
-    });
-
-    // if ($(".github-image").length) {
-    // $(".github-image")
-    //   .map(function () {
-    //     var url = $(this).attr('data-url')
-    //     $.get(url, function (data) {
-    //       console.log(data)
-    //     })
-    //   })
-    //   .get();
-    // }
-  </script>
-<% end %>

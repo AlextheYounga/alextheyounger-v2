@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_054728) do
     t.string "framework"
     t.text "excerpt"
     t.integer "position"
-    t.boolean "use_github", default: false
+    t.string "image_url"
   end
 
   create_table "proposals", force: :cascade do |t|
