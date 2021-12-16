@@ -35,7 +35,7 @@ class Project < ActiveRecord::Base
   end
 
   def attach_screens(params)
-    if (params.present?)
+    if (params[:project][:screen].present?)
       webpObj = WebpConverter.generate_attachment_webp(params[:project][:screen])
       self.screens.attach(params[:project][:screen])
       self.screens.attach(io: File.open(webpObj.first), filename: webpObj.last, content_type: "image/webp")

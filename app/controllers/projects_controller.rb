@@ -33,8 +33,12 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.image_address = params[:project][:screen].original_filename.to_s
+
+    if (params[:project][:screen])
+      @project.image_address = params[:project][:screen].original_filename.to_s
+    end
     @project.image_alt = "Alex Younger Projects List #{params[:project][:title]} in #{params[:project][:framework]}"
+
     if (@project.save)
       @project.attach_screens(params)
       @project.reorder_positions
@@ -83,6 +87,7 @@ class ProjectsController < ApplicationController
       :description,
       :excerpt,
       :image_address,
+      :image_url,
       :image_alt,
       :project_link,
       :framework,
