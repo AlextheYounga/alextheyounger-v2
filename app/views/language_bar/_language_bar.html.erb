@@ -1,12 +1,12 @@
 <div id="language-bar" class="text-lg mx-auto pb-4 px-8">
   <span class="bar w-full mb-4">
-    <% if languageStats.is_a? Hash then %>
-      <% languageStats.each do |lang, val| %>
+    <% if language_stats.is_a? Hash then %>
+      <% language_stats.each do |lang, val| %>
         <span style="width: <%= val %>%" class="bar-item <%= GithubLanguage.slugifyLanguage(lang) %>"></span>
       <% end %>
     </span>
     <ul class="flex flex-wrap">
-      <% languageStats.each do |lang, val| %>
+      <% language_stats.each do |lang, val| %>
         <li class="lang-item w-48">
           <div class="item-wrapper inline-flex flex-nowrap no-underline text-sm mr-3">
             <svg class="octicon <%= GithubLanguage.slugifyLanguage(lang) %> octicon-dot-fill mr-2" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
