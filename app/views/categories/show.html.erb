@@ -1,6 +1,0 @@
-<section class="category-show pb-16">
-    <h1 class="sm:text-3xl font-medium text-2xl py-16 normal-font text-center burgandy"><%="Articles In: " + @category.name %></h1>
-    <%= render 'articles/article', obj: @category_articles %>
-
-    <%= link_to "View All", articles_path, class: "bg-white block border border-red-800hover:bg-red-900 burgandy hover:text-red-600-100 mx-auto my-4 no-underline normal-font py-3 rounded shadow-lg w-48" %>
-</section>

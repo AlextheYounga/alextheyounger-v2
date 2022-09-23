@@ -1,41 +1,21 @@
-<nav id="admin-nav" class="bg-gray-900 w-full z-50 py-2">
+<nav id="admin-nav" class="bg-gray-900 w-full z-50 py-1">
   <ul class="list-style-none relative w-5/6 mx-auto flex justify-end">
     <li class="admin-link text-white w-24 text-center hover:bg-black p-1 rounded relative">
-      <a href="#" class="text-white no-underline">Article</a>
-      <ul class="admin-dropdown px-0 list-style-none bg-gray-900 w-24 z-50">
-        <li class="hover:bg-black p-1 w-full"><%= link_to "Index", articles_path, class: "text-white no-underline"%></li>
-        <li class="hover:bg-black p-1 w-full"><%= link_to "New", new_article_path, class: "text-white no-underline"%></li>
-        <li class="hover:bg-black p-1 w-full"><%= link_to "Categories", categories_path, class: "text-white no-underline"%></li>
-        <li class="hover:bg-black p-1 w-full"><%= link_to "New Category", new_category_path, class: "text-white no-underline"%></li>
-      </ul>
-    </li>
-    <li class="admin-link text-white w-24 text-center hover:bg-black p-1 rounded relative">
-      <a href="#" class="text-white no-underline">Post</a>
-      <ul class="admin-dropdown px-0 list-style-none bg-gray-900 w-24 z-50">
-        <li class="hover:bg-black p-1 w-full"><%= link_to "Index", posts_path, class: "text-white no-underline"%></li>
-      </ul>
-    </li>
-    <li class="admin-link text-white w-24 text-center hover:bg-black p-1 rounded relative">
       <a href="#" class="text-white no-underline">Book</a>
-      <ul class="admin-dropdown px-0 list-style-none bg-gray-900 w-24 z-50">
-        <li class="hover:bg-black p-1 w-full"><%= link_to "New", new_book_path, class: "text-white no-underline"%></li>
-        <li class="hover:bg-black p-1 w-full"><%= link_to "New Category", new_book_category_path, class: "text-white no-underline"%></li>
-        <li class="hover:bg-black p-1 w-full"><%= link_to "Book Categories", book_categories_path, class: "text-white no-underline"%></li>
+      <ul class="admin-dropdown px-0 list-style-none bg-gray-900 w-36 z-50">
+        <li class="hover:bg-black py-3 w-full"><%= link_to "New", new_book_path, class: "text-white no-underline"%></li>
+        <li class="hover:bg-black py-3 w-full"><%= link_to "New Category", new_book_category_path, class: "text-white no-underline"%></li>
+        <li class="hover:bg-black py-3 w-full"><%= link_to "Book Categories", book_categories_path, class: "text-white no-underline"%></li>
+        <li class="hover:bg-black py-3 w-full"><%= link_to "Reorder Books", books_sort_path, class: "text-white no-underline"%></li>
       </ul>
     </li>
-    <li class="admin-link text-white w-24 text-center hover:bg-black p-1 rounded relative">
+    <li class="admin-link text-white w-36 text-center hover:bg-black p-1 rounded relative">
       <a href="#" class="text-white no-underline">Project</a>
       <ul class="admin-dropdown px-0 list-style-none bg-gray-900 w-24 z-50">
-        <li class="hover:bg-black p-1 w-full"><%= link_to "New", new_project_path, class: "text-white no-underline"%></li>        
+        <li class="hover:bg-black py-3 w-full"><%= link_to "New", new_project_path, class: "text-white no-underline"%></li>        
       </ul>
     </li>
-    <li class="admin-link text-white w-24 text-center hover:bg-black p-1 rounded relative">
-      <a href="#" class="text-white no-underline">Stock</a>
-      <ul class="admin-dropdown px-0 list-style-none bg-gray-900 w-24 z-50">
-        <li class="hover:bg-black p-1 w-full"><%= link_to "Index", stocks_path, class: "text-white no-underline"%></li>
-      </ul>
-    </li>
-    <li class="admin-link w-24 text-center hover:bg-black p-1 rounded relative">
+    <li class="admin-link w-36 text-center hover:bg-black p-1 rounded relative">
       <%= link_to "Log Out", logout_path, method: :delete, class: "text-white no-underline"%>
     </li>
   </ul>
