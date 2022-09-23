@@ -30,20 +30,12 @@ gem 'bcrypt'
 
 # Asset gems
 gem 'jquery-rails'
-gem 'material_icons'
-gem 'font-awesome-rails'
 gem 'webpacker', '~> 5.x'
-gem 'ckeditor'
-gem 'paperclip'
 gem "lazyload-rails"
 
 # Web gems
 gem 'httparty'
 gem 'async-http'
-
-# Market gems
-gem 'stock_quote'
-gem 'iex-ruby-client'
 
 # Image gems
 gem 'carrierwave-imageoptimizer'
@@ -52,7 +44,6 @@ gem 'webp-ffi'
 
 # Misc gems
 gem 'meta-tags'
-gem 'hirb'
 gem 'solargraph'
 gem 'colorize'
 
@@ -75,6 +66,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'hirb'
 end
 
 group :development do

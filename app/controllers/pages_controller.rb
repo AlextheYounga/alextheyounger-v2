@@ -1,4 +1,3 @@
-require "iex-ruby-client"
 class PagesController < ApplicationController
   def home
     @projects = Project.order(:position)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_054728) do
+ActiveRecord::Schema.define(version: 2022_09_23_175336) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -73,52 +73,11 @@ ActiveRecord::Schema.define(version: 2021_12_15_054728) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string "data_file_name", null: false
-    t.string "data_content_type"
-    t.integer "data_file_size"
-    t.string "data_fingerprint"
-    t.string "type", limit: 30
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
-  end
-
-  create_table "countries", force: :cascade do |t|
-    t.string "name"
-    t.string "print_name"
-    t.decimal "inflation"
-    t.decimal "corporate_tax"
-    t.decimal "interest_rate"
-    t.decimal "unemployment"
-    t.decimal "income_tax"
-    t.decimal "gdp"
-    t.decimal "gov_debt_to_gdp"
-    t.decimal "bank_balance_sheet"
-    t.decimal "central_bank"
-    t.decimal "budget"
-  end
-
-  create_table "favorite_quotes", force: :cascade do |t|
-    t.text "quote"
-    t.string "name"
-    t.string "category"
-  end
-
   create_table "github_languages", force: :cascade do |t|
     t.string "language"
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.string "link"
-    t.string "image"
-    t.string "date"
-    t.string "subtitle"
   end
 
   create_table "projects", force: :cascade do |t|
