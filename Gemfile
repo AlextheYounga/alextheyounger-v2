@@ -8,7 +8,6 @@ gem 'rails', '~> 6.0.3.4'
 # Use Puma as the app server
 # gem 'activeadmin'
 
-
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -30,29 +29,29 @@ gem 'bcrypt'
 
 # Asset gems
 gem 'jquery-rails'
+gem 'lazyload-rails'
 gem 'webpacker', '~> 5.x'
-gem "lazyload-rails"
 
 # Web gems
-gem 'httparty'
 gem 'async-http'
+gem 'httparty'
 
 # Image gems
-gem 'carrierwave-imageoptimizer'
 gem 'carrierwave'
+gem 'carrierwave-imageoptimizer'
 gem 'webp-ffi'
 
 # Misc gems
+gem 'colorize'
 gem 'meta-tags'
 gem 'solargraph'
-gem 'colorize'
 
 # Scientific
 gem 'descriptive-statistics'
 gem 'particles-js-rails'
 
 # Use ActiveStorage variant
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
 
 # Use Capistrano for deployment
@@ -63,19 +62,19 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'hirb'
+  gem 'sqlite3'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'  
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
@@ -92,5 +91,6 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "rspec-rails", group: [:development, :test]
+gem 'rails-controller-testing', group: %i[development test]
+gem 'rspec-rails', group: %i[development test]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
