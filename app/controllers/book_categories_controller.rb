@@ -7,10 +7,10 @@ class BookCategoriesController < ApplicationController
   def create
     @category = BookCategory.new(book_category_params)
     if @category.save
-      flash[:success] = "Category was successfully created"
+      flash[:success] = 'Category was successfully created'
       redirect_to book_categories_path
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -25,21 +25,20 @@ class BookCategoriesController < ApplicationController
   def update
     @category = BookCategory.find(params[:id])
     if @category.update(book_category_params)
-      flash[:success] = "Name was successfully updated"
+      flash[:success] = 'Name was successfully updated'
       redirect_to book_categories_path
     else
-      render "edit"
+      render 'edit'
     end
   end
-  
+
   private
+
   def book_category_params
-	params.require(:book_category).permit(:name, :html_selector)
+    params.require(:book_category).permit(:name, :html_selector)
   end
 
   def restrict
-    if not master_logged_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless master_logged_in?
   end
 end
