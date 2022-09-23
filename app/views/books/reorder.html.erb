@@ -1,0 +1,55 @@
+<h1 class="sm:text-3xl text-2xl font-medium fancy-font mb-4 text-gray-900 text-center">Reorder Books</h1>
+<div class="container mx-auto">
+<div class="overflow-hidden bg-white shadow sm:rounded-md">
+  <ul role="list" id="book-reorder-list" class="divide-y divide-gray-200">
+  <% if @books.any? then %>
+    <% @books.each do |book| %>
+    <li>
+      <div class="block hover:bg-gray-50">      
+        <div class="flex px-4 py-4 sm:px-6">
+          <% if (book.covers.attached?) %>
+            <picture>
+              <source srcset="<%= book.get_webp_attachment %>" type="image/webp">
+              <source srcset="<%= book.get_jpeg_attachment %>" type="image/jpg">
+              <img src="<%= book.get_jpeg_attachment %>" class="flex h-16" alt="<%= book.image_alt %>"/>
+            </picture>
+          <% else %>
+            <picture>
+              <source srcset="<%= "#{image_path(book.image_address)}.webp" %>" type="image/webp">
+              <source srcset="<%= image_path(book.image_address) %>" type="image/jpg">
+              <img src="<%= image_path(book.image_address) %>" class="flex h-16" alt="<%= book.image_alt %>"/>
+            </picture>
+          <% end %>
+          <div class="w-full px-4 sm:px-6">
+            <div class="flex items-center justify-between">
+              <p class="truncate text-sm font-medium text-indigo-600"><%= book.title %></p>
+              <div class="ml-2 flex flex-shrink-0">
+                <p class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"><%= book.position %></p>
+              </div>
+            </div>
+            <div class="mt-2 sm:flex sm:justify-between">
+              <div class="sm:flex">
+                <p class="flex items-center text-sm text-gray-500">
+                  <%= book.subtitle %>
+                </p>
+              </div>
+              <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                <p>
+                  <%= book.author %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+<script>
+var el = document.getElementById('book-reorder-list');
+var sortable = Sortable.create(el);
+</script>

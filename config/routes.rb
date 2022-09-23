@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   get '/resume' => 'pages#resume'
 
   resources :users, except: [:signup]
-  resources :books, except: [:signup]
+  resources :books, except: [:signup, :show]
   resources :projects, except: [:signup]
   resources :book_categories
+
+  get '/books/reorder' => 'books#reorder'
 
   get 'login' => 'sessions#login'
   post 'login' => 'sessions#create'
