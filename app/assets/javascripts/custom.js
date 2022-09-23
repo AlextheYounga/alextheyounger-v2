@@ -12,7 +12,6 @@ $(document).ready(function () {
     $('.mobile-menu').toggleClass('z-negative');
     $('.mobile-menu').toggleClass('z-40');
     $('.mobile-menu ul').toggleClass('hidden');
-    // setTimeout(function() { $('.mobile-menu').toggleClass('z-40'); }, 200);
     return false;
   });
 
@@ -37,7 +36,6 @@ $(document).ready(function () {
     }
   }
 
-  console.log
 });
 
 colors = {

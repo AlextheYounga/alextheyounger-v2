@@ -1,27 +1,27 @@
-load "app/modules/webp_converter.rb"
-require "mini_magick"
+load 'app/modules/webp_converter.rb'
+require 'mini_magick'
 
 class BooksController < ApplicationController
-  before_action :set_book, only: [:edit, :update, :destroy]
+  before_action :set_book, only: %i[edit update destroy]
   before_action :restrict, except: :index
 
   def index
     @books = Book.order(:position)
-	@categories = BookCategory.order(:name)
+    @categories = BookCategory.order(:name)
 
-    set_meta_tags title: "Reading List",
-                  site: "alextheyounger.me",
-                  description: "Alex Younger - My Reading List. A list of books that have impacted my life in some way.",
+    set_meta_tags title: 'Reading List',
+                  site: 'alextheyounger.me',
+                  description: 'Alex Younger - My Reading List. A list of books that have impacted my life in some way.',
                   reverse: true,
-                  image_src: ActionController::Base.helpers.asset_path("books_meta.png"),
+                  image_src: ActionController::Base.helpers.asset_path('books_meta.png'),
                   og: {
-                    title: "Reading List",
-                    url: "#{Rails.root}",
-                    image: ActionController::Base.helpers.asset_path("books_meta.png"),
+                    title: 'Reading List',
+                    url: Rails.root.to_s,
+                    image: ActionController::Base.helpers.asset_path('books_meta.png')
                   },
                   twitter: {
-                    card: "Alex Younger - ReadlingList - Books that have impacted my life in some way.",
-                    site: "@AlextheYounga",
+                    card: 'Alex Younger - ReadlingList - Books that have impacted my life in some way.',
+                    site: '@AlextheYounga'
                   }
   end
 
@@ -29,49 +29,67 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  def edit
+  def sort
+    @books = Book.order(:position)
   end
+
+  def mass_sort
+    user_sorted_book_ids = params['order']
+    order_index = 0
+
+    user_sorted_book_ids.each do |id|
+      order_index += 1
+
+      book = Book.find(id)
+      book.position = order_index
+      book.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to books_sort_path, notice: 'Order was successfully updated.' }
+    end
+  end
+
+  def edit; end
 
   def create
     @book = Book.new(book_params)
     @book.image_address = params[:book][:cover].original_filename.to_s
     @book.image_alt = "Alex Younger Readling List #{params[:book][:title]} by #{params[:book][:author]}"
-    if (@book.save)
+    if @book.save
       @book.attach_covers(params)
       @book.reorder_positions
-      flash[:notice] = "Book was successfully created"
+      flash[:notice] = 'Book was successfully created'
       redirect_to books_path
     else
-      render "new"
-    end    
+      render 'new'
+    end
   end
 
   def update
-    if (@book.update(book_params))
+    if @book.update(book_params)
       @book.reorder_positions
-      if (params[:book][:cover])
+      if params[:book][:cover]
         @book.covers.purge
         @book.attach_covers(params)
       end
-      flash[:notice] = "Book was successfully updated"
+      flash[:notice] = 'Book was successfully updated'
       redirect_to books_path
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     @book.destroy
-    flash[:notice] = "Book was successfully obliterated"
+    flash[:notice] = 'Book was successfully obliterated'
     redirect_to books_path
   end
 
   private
 
   def restrict
-    if not master_logged_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless master_logged_in?
   end
 
   def set_book

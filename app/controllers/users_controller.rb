@@ -1,18 +1,16 @@
 class UsersController < ApplicationController
   def signup
-    if not master_logged_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless master_logged_in?
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome Alex"
+      flash[:success] = 'Welcome Alex'
       redirect_to articles_path
     else
-      render "signup"
+      render 'signup'
     end
   end
 
