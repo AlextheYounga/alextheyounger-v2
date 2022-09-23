@@ -2,9 +2,7 @@ require "iex-ruby-client"
 class PagesController < ApplicationController
   def home
     @projects = Project.order(:position)
-    @stocks = Stock.all
     @languageStats = GithubLanguage.calculateWidths
-
     set_meta_tags title: "Home",
                   site: "alextheyounger.me",
                   description: "Alex Younger - My Space on the Internet",
@@ -23,7 +21,6 @@ class PagesController < ApplicationController
   def resume    
     @projects = Project.order(:position)
     @languageStats = GithubLanguage.calculateWidths
-    @chartData = Stock.getHistoricalData('TSLA', '3m', false, true)
     set_meta_tags title: "Resume",
                   site: "alextheyounger.me",
                   description: "Alex Younger - Web Developer, Data Scientist, Investor, Entrepreneur",
