@@ -29,8 +29,25 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  def reorder
+  def sort
     @books = Book.order(:position)
+  end
+
+  def mass_sort
+    user_sorted_book_ids = params['order']
+    order_index = 0
+
+    user_sorted_book_ids.each do |id|
+      order_index += 1
+
+      book = Book.find(id)
+      book.position = order_index
+      book.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to books_sort_path, notice: 'Order was successfully updated.' }
+    end
   end
 
   def edit; end

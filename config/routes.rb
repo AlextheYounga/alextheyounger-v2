@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :projects, except: [:signup]
   resources :book_categories
 
-  get '/books/reorder' => 'books#reorder'
+  get '/books/sort' => 'books#sort'
+  post '/books/mass-sort' => 'books#mass_sort'
 
   get 'login' => 'sessions#login'
   post 'login' => 'sessions#create'
