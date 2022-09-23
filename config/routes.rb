@@ -12,9 +12,13 @@ Rails.application.routes.draw do
   get "/resume" => "pages#resume"
 
   resources :users, except: [:signup]
+<<<<<<< Updated upstream
   resources :articles, except: [:signup]
   resources :categories, except: [:destroy]
   resources :books, except: [:signup]
+=======
+  resources :books, except: [:signup, :show]
+>>>>>>> Stashed changes
   resources :projects, except: [:signup]
   # resources :research, except: [:signup]
   resources :book_categories
@@ -33,4 +37,12 @@ Rails.application.routes.draw do
   # get "about", to: "pages#about"
   # get "search_stocks", to: "stocks#search"
 
+<<<<<<< Updated upstream
+=======
+  get '/books/reorder' => 'books#reorder'
+
+  get 'login' => 'sessions#login'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+>>>>>>> Stashed changes
 end

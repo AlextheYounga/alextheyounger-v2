@@ -25,6 +25,10 @@ class BooksController < ApplicationController
                   }
   end
 
+  def reorder
+    @books = Book.order(:position)
+  end
+
   def new
     @book = Book.new
   end
