@@ -7,7 +7,6 @@ RSpec.describe 'PagesControllers', type: :request do
 
       templates = [
         'language_bar/_language_bar',
-        'partials/_projects-carousel',
         'pages/home',
         'layouts/_terrain',
         'partials/_nav',

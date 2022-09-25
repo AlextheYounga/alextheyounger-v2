@@ -33,11 +33,15 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    @project.image_address = params[:project][:screen].original_filename.to_s if params[:project][:screen]
-    @project.image_alt = "Alex Younger Projects List #{params[:project][:title]} in #{params[:project][:framework]}"
+    title = params.dig(:project, :title)
+    framework = params.dig(:project, :framework)
+    screen = params.dig(:project, :screen)
+
+    @project.image_address = screen.original_filename.to_s unless screen.nil?
+    @project.image_alt = "Alex Younger Projects List #{title} in #{framework}"
 
     if @project.save
-      @project.attach_screens(params)
+      @project.attach_screen(params)
       @project.reorder_positions
       flash[:notice] = 'Project was successfully created'
       redirect_to projects_path
@@ -49,9 +53,10 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       @project.reorder_positions
-      if params[:project][:screen]
+      screen = params.dig(:project, :screen)
+      unless screen.nil?
         @project.screens.purge
-        @project.attach_screens(params)
+        @project.attach_screen(screen)
       end
       flash[:notice] = 'Project was successfully updated'
       redirect_to projects_path

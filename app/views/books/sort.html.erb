@@ -9,9 +9,9 @@
           <div class="flex px-4 py-2 sm:px-6">
             <% if (book.covers.attached?) %>
               <picture>
-                <source srcset="<%= book.get_webp_attachment %>" type="image/webp">
-                <source srcset="<%= book.get_jpeg_attachment %>" type="image/jpg">
-                <img src="<%= book.get_jpeg_attachment %>" class="flex h-12" alt="<%= book.image_alt %>"/>
+                <source srcset="<%= book.webp_attachment %>" type="image/webp">
+                <source srcset="<%= book.jpeg_attachment %>" type="image/jpg">
+                <img src="<%= book.jpeg_attachment %>" class="flex h-12" alt="<%= book.image_alt %>"/>
               </picture>
             <% else %>
               <picture>
