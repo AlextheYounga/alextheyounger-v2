@@ -1,6 +1,6 @@
-<section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-col text-center w-full mb-20">
+<section class="text-gray-600 body-font projects">
+  <div class="container px-5 py-12 mx-auto">
+    <div class="bg-white flex flex-col mb-16 mx-auto py-2 rounded shadow-lg text-center w-3/5 border">
       <h1 class="sm:text-3xl text-2xl font-medium fancy-font mb-4 text-gray-900">Projects</h1>
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Here are some of my proudest projects, personal and professional.</p>
     </div>
@@ -8,9 +8,9 @@
       <% if @projects.any? then %>
         <% @projects.each do |project| %>
 
-        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg relative">
+        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg relative border">
           <% if master_logged_in? %>
-            <div class="absolute right-0 top-0 w-36 justify-between">
+            <div class="absolute right-0 top-0 justify-between">
               <a href="<%= edit_project_path(project) %>" class="bg-blue-600 edit-project-link hover:bg-blue-700 hover:underline no-underline px-3 py-2 rounded-b shadow text-white w-12">Edit</a>
               <%= link_to "Destroy", project_path(project), method: :delete, data: {confirm: "Are you sure you want to destroy this project?"}, class: "bg-red-600 edit-project-link hover:bg-red-700 hover:underline no-underline px-3 py-2 rounded-b shadow text-white" %>
             </div>
@@ -38,8 +38,8 @@
           </div>
           <div class="flex flex-1 flex-col justify-between bg-white p-6">
             <div class="flex-1">
-              <p class="text-sm font-medium text-indigo-600">
-                <a href="#" class="hover:underline"><%= project.framework%></a>
+              <p class="inline-flex rounded-full <%=project.assign_color('bg')%> px-2 text-xs font-semibold leading-5 <%=project.assign_color('text')%>">
+                <%= project.framework %>
               </p>
               <a href="<%= project.project_link %>" class="mt-2 block">
                 <p class="text-xl font-semibold text-gray-900"><%= project.title%></p>
