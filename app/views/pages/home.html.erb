@@ -2,6 +2,7 @@
   <p id="generator-notice" class="text-sm sm:text-lg absolute left-0 m-4 sm:m-3 text-black">Generating random fractal terrain...</p>
   <button id="generate-new" onclick="window.location.reload();" class="bg-red-800 top-28 left-2.5 fixed hover:bg-red-900 normal-font p-1 rounded text-sm text-white z-50" style="display: none;">Generate New Terrain</button>
 <% end %>
+<!-- Header -->
 <div class="wrapper w-5/6 sm:w-3/5 mx-auto max-w-3xl">
   <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative home-content js--fadeInLeft">
     <picture>
@@ -10,20 +11,22 @@
       <img src="<%= image_path("neonheadshot.jpg") %>" class="headshot flex sm:mt-10 mx-auto relative text-center" alt="alex younger developer marketing about me"/>
     </picture>
   </section>
-
-  <section class="title mb-8 bg-white shadow rounded relative home-content js--fadeInLeft">
+  
+  <section class="title mb-8 bg-white border shadow rounded relative home-content js--fadeInLeft">
     <h1 class="fancy-font text-5xl text-black text-center">Alex Younger</h1>
     <p class="fancy-font py-2 text-black text-center text-lg">Software Engineer, Data Scientist, Entrepreneur</p>
   </section>
 
-  <section class="bg-white my-8 p-2 py-8 shadow relative rounded z-10 home-content js--fadeInLeft">
+  <!-- Skills -->
+  <section class="bg-white border my-8 p-2 py-8 shadow relative rounded z-10 home-content js--fadeInLeft">
     <div class="language-stats">
       <h2 class="mb-3 text-3xl text-gray-900 fancy-font sm:px-8">Skills</h2>
       <%= render partial: "language_bar/language_bar", locals: {language_stats: @language_stats} %>
     </div>
   </section>
 
-  <section class="home-description relative bg-white mt-24 mb-8 p-8 home-content js--fadeInLeft shadow">
+  <!-- Description -->
+  <section class="home-description relative bg-white border mt-24 mb-8 p-8 home-content js--fadeInLeft shadow">
     <div class="absolute top-0 left-0">
       <picture>
         <source srcset="<%= image_path("bridge-standing.jpg.webp") %>" type="image/webp" class="flex force-vertical-align mx-auto relative text-center w-full">
@@ -50,22 +53,50 @@
     </div>
   </section>
 
-  <section class="projects-home p-2 sm:p-8 relative mb-8 bg-white home-content js--fadeInLeft">
-    <%= render partial: "partials/projects-carousel" %>
+  <!-- Projects List -->
+  <section class="projects-home p-2 sm:p-8 relative mb-8 bg-white border home-content js--fadeInLeft">
+    <h3 class="text-3xl text-gray-900 mb-4 fancy-font mx-auto">Projects</h3>
+    <div class="overflow-hidden bg-white border shadow sm:rounded-md">
+      <ul role="list" class="divide-y divide-gray-200 overflow-scroll">
+        <% if @projects.any? then %>
+        <% @projects.each do |project| %>
+          <li>
+            <a href="<%= project.project_link %>" class="block hover:bg-gray-50">
+              <div class="px-4 py-4 sm:px-6">
+                <div class="flex items-center justify-between">
+                  <p class="truncate text-lg font-medium text-blue-600 normal-font"><%= project.title %></p>
+                  <div class="ml-2 flex flex-shrink-0">
+                    <p class="inline-flex rounded-full <%=project.assign_color('bg')%> px-2 text-xs font-semibold leading-5 <%=project.assign_color('text')%>"><%= project.framework %></p>
+                  </div>
+                </div>
+                <div class="mt-2 sm:flex sm:justify-between">
+                  <div class="sm:flex">
+                    <p class="flex items-center text-sm text-gray-500 truncate">
+                      <%= project.excerpt.present? ? project.excerpt : project.description %>...
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
+  <a href="<%= projects_path %>" class="bg-white border block border border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12">
+    See More
+  </a>
   </section>
 </div>
 
 <% content_for :javascripts do %>
-  <link href="https://unpkg.com/flickity@2/dist/flickity.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script>
-
-    window.sr = ScrollReveal();
-    view = 'desktop';
-
+    var view = 'desktop';
     if ($(window).width() <= 768) {
       view = 'mobile';
     }
+
+    window.sr = ScrollReveal();
 
     function reveal() {
       if (view == 'mobile') {
@@ -83,35 +114,10 @@
       }
 
       $('#generator-notice').fadeOut('slow');
-	  if (view != 'mobile') {
-      	$('#generate-new').fadeIn('slow');
-	  }
-      $('footer').removeClass('hidden');
-
-      var flky = new Flickity('.projects-carousel', {
-        accessibility: true,
-        adaptiveHeight: false,
-        autoPlay: false,
-        cellAlign: 'center',
-        cellSelector: undefined,
-        contain: false,
-        draggable: '>1',
-        dragThreshold: 3,
-        freeScroll: false,
-        friction: 0.2,
-        groupCells: false,
-        initialIndex: 0,
-        lazyLoad: true,
-        percentPosition: true,
-        prevNextButtons: false,
-        pageDots: true,
-        resize: true,
-        rightToLeft: false,
-        setGallerySize: true,
-        watchCSS: false,
-        wrapAround: false
-      });
-      $('.carousel-cell').addClass('h-full');
+      if (view != 'mobile') {
+          $('#generate-new').fadeIn('slow');
+      }
+        $('footer').removeClass('hidden');
     }
 
     function terrainFinished() {
@@ -125,6 +131,7 @@
       }
       terrainFinished()
     }
+
     waitForTerrain()
   </script>
 <% end %>

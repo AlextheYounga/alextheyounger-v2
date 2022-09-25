@@ -33,9 +33,9 @@
               <a href="<%= book.book_link %>" target="_blank" rel="nofollow" class="no-underline">
                 <% if (book.covers.attached?) %>
                   <picture>
-                    <source srcset="<%= book.get_webp_attachment %>" type="image/webp">
-                    <source srcset="<%= book.get_jpeg_attachment %>" type="image/jpg">
-                    <img src="<%= book.get_jpeg_attachment %>" class="mb-3 mx-auto shadow" alt="<%= book.image_alt %>"/>
+                    <source srcset="<%= book.webp_attachment %>" type="image/webp">
+                    <source srcset="<%= book.jpeg_attachment %>" type="image/jpg">
+                    <img src="<%= book.jpeg_attachment %>" class="mb-3 mx-auto shadow" alt="<%= book.image_alt %>"/>
                   </picture>
                 <% else %>
                   <picture>
