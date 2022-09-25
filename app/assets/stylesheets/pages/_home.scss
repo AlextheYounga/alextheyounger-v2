@@ -48,15 +48,3 @@
         height: 60vh;
     }
 }
-
-.projects-carousel {
-    .carousel-cell {
-        width: 100%;
-        display: flex !important;
-    }
-    @media(max-width: 768px) {        
-        .flickity-page-dots {
-            bottom: -35px;
-        }
-    }
-}

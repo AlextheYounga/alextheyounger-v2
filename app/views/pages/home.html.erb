@@ -12,13 +12,13 @@
     </picture>
   </section>
   
-  <section class="title mb-8 bg-white shadow rounded relative home-content js--fadeInLeft">
+  <section class="title mb-8 bg-white border shadow rounded relative home-content js--fadeInLeft">
     <h1 class="fancy-font text-5xl text-black text-center">Alex Younger</h1>
     <p class="fancy-font py-2 text-black text-center text-lg">Software Engineer, Data Scientist, Entrepreneur</p>
   </section>
 
   <!-- Skills -->
-  <section class="bg-white my-8 p-2 py-8 shadow relative rounded z-10 home-content js--fadeInLeft">
+  <section class="bg-white border my-8 p-2 py-8 shadow relative rounded z-10 home-content js--fadeInLeft">
     <div class="language-stats">
       <h2 class="mb-3 text-3xl text-gray-900 fancy-font sm:px-8">Skills</h2>
       <%= render partial: "language_bar/language_bar", locals: {language_stats: @language_stats} %>
@@ -26,7 +26,7 @@
   </section>
 
   <!-- Description -->
-  <section class="home-description relative bg-white mt-24 mb-8 p-8 home-content js--fadeInLeft shadow">
+  <section class="home-description relative bg-white border mt-24 mb-8 p-8 home-content js--fadeInLeft shadow">
     <div class="absolute top-0 left-0">
       <picture>
         <source srcset="<%= image_path("bridge-standing.jpg.webp") %>" type="image/webp" class="flex force-vertical-align mx-auto relative text-center w-full">
@@ -53,10 +53,10 @@
     </div>
   </section>
 
-  <!-- Projects Carousel -->
-  <section class="projects-home p-2 sm:p-8 relative mb-8 bg-white home-content js--fadeInLeft">
+  <!-- Projects List -->
+  <section class="projects-home p-2 sm:p-8 relative mb-8 bg-white border home-content js--fadeInLeft">
     <h3 class="text-3xl text-gray-900 mb-4 fancy-font mx-auto">Projects</h3>
-    <div class="overflow-hidden bg-white shadow sm:rounded-md">
+    <div class="overflow-hidden bg-white border shadow sm:rounded-md">
       <ul role="list" class="divide-y divide-gray-200 overflow-scroll">
         <% if @projects.any? then %>
         <% @projects.each do |project| %>
@@ -83,23 +83,20 @@
       <% end %>
       </ul>
     </div>
-  <a href="<%= projects_path %>" class="bg-white block border border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12">
+  <a href="<%= projects_path %>" class="bg-white border block border border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12">
     See More
   </a>
   </section>
 </div>
 
 <% content_for :javascripts do %>
-  <link href="https://unpkg.com/flickity@2/dist/flickity.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script>
-
-    window.sr = ScrollReveal();
-    view = 'desktop';
-
+    var view = 'desktop';
     if ($(window).width() <= 768) {
       view = 'mobile';
     }
+
+    window.sr = ScrollReveal();
 
     function reveal() {
       if (view == 'mobile') {
@@ -117,35 +114,10 @@
       }
 
       $('#generator-notice').fadeOut('slow');
-	  if (view != 'mobile') {
-      	$('#generate-new').fadeIn('slow');
-	  }
-      $('footer').removeClass('hidden');
-
-      var flky = new Flickity('.projects-carousel', {
-        accessibility: true,
-        adaptiveHeight: false,
-        autoPlay: false,
-        cellAlign: 'center',
-        cellSelector: undefined,
-        contain: false,
-        draggable: '>1',
-        dragThreshold: 3,
-        freeScroll: false,
-        friction: 0.2,
-        groupCells: false,
-        initialIndex: 0,
-        lazyLoad: true,
-        percentPosition: true,
-        prevNextButtons: false,
-        pageDots: true,
-        resize: true,
-        rightToLeft: false,
-        setGallerySize: true,
-        watchCSS: false,
-        wrapAround: false
-      });
-      $('.carousel-cell').addClass('h-full');
+      if (view != 'mobile') {
+          $('#generate-new').fadeIn('slow');
+      }
+        $('footer').removeClass('hidden');
     }
 
     function terrainFinished() {
@@ -159,6 +131,7 @@
       }
       terrainFinished()
     }
+
     waitForTerrain()
   </script>
 <% end %>
