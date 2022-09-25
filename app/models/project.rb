@@ -82,7 +82,7 @@ class Project < ActiveRecord::Base
       },
       'net' => {
         'text' => 'text-gray-700',
-        'bg' => 'bg-gray-100'
+        'bg' => 'bg-gray-200'
       },
       'electron-js' => {
         'text' => 'text-green-700',

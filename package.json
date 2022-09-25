@@ -1,6 +1,9 @@
 {
   "name": "my-site",
   "private": true,
+  "engines": {
+    "node": "14.20.0"
+  },
   "dependencies": {
     "@rails/webpacker": "5.2.1",
     "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat@^2.0.2",
