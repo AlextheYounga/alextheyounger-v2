@@ -33,8 +33,7 @@ class Book < ActiveRecord::Base
     nil
   end
 
-  def attach_cover(params)
-    cover = params.dig(:book, :cover)
+  def attach_cover(cover)
     return if cover.nil?
 
     resize_cover(cover)

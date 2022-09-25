@@ -24,10 +24,10 @@ class Project < ActiveRecord::Base
     nil
   end
 
-  def attach_screen(params)
-    screen = params.dig(:project, :screen)
+  def attach_screen(screen)
     return if screen.nil?
 
+    resize_screen(screen)
     webp_obj = WebpConverter.generate_attachment_webp(screen)
     screens.attach(screen)
     screens.attach(io: File.open(webp_obj.first), filename: webp_obj.last, content_type: 'image/webp')
@@ -58,25 +58,46 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def assign_color
+  def assign_color(attribute)
     colors = {
-      'ruby-on-rails' => 'text-red-600',
-      'php-laravel' => 'text-blue-600',
-      'php' => 'text-blue-600',
-      'wordpress' => 'text-blue-700',
-      'python' => 'text-yellow-700',
-      'net' => 'text-gray-700'
+      'ruby-on-rails' => {
+        'text' => 'text-red-600',
+        'bg' => 'bg-red-100'
+      },
+      'php-laravel' => {
+        'text' => 'text-blue-600',
+        'bg' => 'bg-blue-100'
+      },
+      'php' => {
+        'text' => 'text-blue-600',
+        'bg' => 'bg-blue-100'
+      },
+      'wordpress' => {
+        'text' => 'text-blue-700',
+        'bg' => 'bg-blue-50'
+      },
+      'python' => {
+        'text' => 'text-yellow-700',
+        'bg' => 'bg-yellow-100'
+      },
+      'net' => {
+        'text' => 'text-gray-700',
+        'bg' => 'bg-gray-100'
+      },
+      'electron-js' => {
+        'text' => 'text-green-700',
+        'bg' => 'bg-green-100'
+      }
     }
 
     lang = framework.parameterize
-
-    colors[lang]
+    colors.dig(lang, attribute).nil? ? '' : colors[lang][attribute]
   end
 
-  private 
+  private
 
-  def resize_cover(cover)
+  def resize_screen(cover)
     mini_image = MiniMagick::Image.new(cover.tempfile.path)
-    mini_image.resize "200x#{mini_image.height}"
+    mini_image.resize "#{mini_image.width}x192"
   end
 end

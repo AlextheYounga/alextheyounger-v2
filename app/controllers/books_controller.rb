@@ -54,10 +54,15 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.image_address = params[:book][:cover].original_filename.to_s
-    @book.image_alt = "Alex Younger Readling List #{params[:book][:title]} by #{params[:book][:author]}"
+    cover = params.dig(:book, :cover)
+    author = params.dig(:book, :author)
+    title = params.dig(:book, :title)
+
+    @book.image_address = cover.original_filename.to_s unless cover.nil?
+    @book.image_alt = "Alex Younger Readling List #{title} by #{author}"
+
     if @book.save
-      @book.attach_cover(params)
+      @book.attach_cover(cover)
       @book.reorder_positions
       flash[:notice] = 'Book was successfully created'
       redirect_to books_path
@@ -69,9 +74,10 @@ class BooksController < ApplicationController
   def update
     if @book.update(book_params)
       @book.reorder_positions
-      if params[:book][:cover]
+      cover = params.dig(:book, :cover)
+      unless cover.nil?
         @book.covers.purge
-        @book.attach_cover(params)
+        @book.attach_cover(cover)
       end
       flash[:notice] = 'Book was successfully updated'
       redirect_to books_path
