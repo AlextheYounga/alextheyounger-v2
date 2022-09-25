@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
     @project.image_alt = "Alex Younger Projects List #{params[:project][:title]} in #{params[:project][:framework]}"
 
     if @project.save
-      @project.attach_screens(params)
+      @project.attach_screen(params)
       @project.reorder_positions
       flash[:notice] = 'Project was successfully created'
       redirect_to projects_path
@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
       @project.reorder_positions
       if params[:project][:screen]
         @project.screens.purge
-        @project.attach_screens(params)
+        @project.attach_screen(params)
       end
       flash[:notice] = 'Project was successfully updated'
       redirect_to projects_path

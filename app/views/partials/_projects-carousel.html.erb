@@ -15,9 +15,9 @@
               <% else %>
                 <% if (project.screens.attached?) %>
                   <picture>
-                    <source srcset="<%= project.get_webp_attachment %>" type="image/webp">
-                    <source srcset="<%= project.get_jpeg_attachment %>" type="image/jpg">
-                    <img src="<%= project.get_jpeg_attachment %>" class="w-full" alt="<%= project.image_alt %>"/>
+                    <source srcset="<%= project.webp_attachment %>" type="image/webp">
+                    <source srcset="<%= project.jpeg_attachment %>" type="image/jpg">
+                    <img src="<%= project.jpeg_attachment %>" class="w-full" alt="<%= project.image_alt %>"/>
                   </picture>
                 <% else %>
                   <picture>
