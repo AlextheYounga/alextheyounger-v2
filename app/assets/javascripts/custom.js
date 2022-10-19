@@ -1,42 +1,3 @@
-$(document).ready(function () {
-  $('.mobile-menu').hide
-  //Menu button on click event
-  $('.mobile-nav-button').on('click', function () {
-    // Toggles a class on the menu button to transform the burger menu into a cross
-    $(".mobile-nav-button .mobile-nav-button__line:nth-of-type(1)").toggleClass("mobile-nav-button__line--1");
-    $(".mobile-nav-button .mobile-nav-button__line:nth-of-type(2)").toggleClass("mobile-nav-button__line--2");
-    $(".mobile-nav-button .mobile-nav-button__line:nth-of-type(3)").toggleClass("mobile-nav-button__line--3");
-
-    // Toggles a class that slides the menu into view on the screen
-    $('.mobile-menu').toggleClass('mobile-menu--open');
-    $('.mobile-menu').toggleClass('z-negative');
-    $('.mobile-menu').toggleClass('z-40');
-    $('.mobile-menu ul').toggleClass('hidden');
-    return false;
-  });
-
-  $(window).on('scroll', function () {
-    if ($(window).scrollTop() > 0) {
-      $('#admin-nav').addClass('fixed');
-    } else {
-      $('#admin-nav').removeClass('fixed');
-    }
-  });
-  if ($(window).scrollTop() > 0) {
-    $('#admin-nav').addClass('fixed');
-  } else {
-    $('#admin-nav').removeClass('fixed');
-  }
-
-  if ($('.flash-msg').is(":visible")) {
-    setTimeout(fade_out, 20000);
-
-    function fade_out() {
-      $('.flash-msg').fadeOut().empty();
-    }
-  }
-});
-
 const languageColors = {
   'HTML': '#e34c26',
   'CSS': '#563d7c',
@@ -103,6 +64,46 @@ const languageColors = {
   '.NET': "#a791b4",
   'NET': "#a791b4",
 }
+
+
+$(document).ready(function () {
+  $('.mobile-menu').hide
+  //Menu button on click event
+  $('.mobile-nav-button').on('click', function () {
+    // Toggles a class on the menu button to transform the burger menu into a cross
+    $(".mobile-nav-button .mobile-nav-button__line:nth-of-type(1)").toggleClass("mobile-nav-button__line--1");
+    $(".mobile-nav-button .mobile-nav-button__line:nth-of-type(2)").toggleClass("mobile-nav-button__line--2");
+    $(".mobile-nav-button .mobile-nav-button__line:nth-of-type(3)").toggleClass("mobile-nav-button__line--3");
+
+    // Toggles a class that slides the menu into view on the screen
+    $('.mobile-menu').toggleClass('mobile-menu--open');
+    $('.mobile-menu').toggleClass('z-negative');
+    $('.mobile-menu').toggleClass('z-40');
+    $('.mobile-menu ul').toggleClass('hidden');
+    return false;
+  });
+
+  $(window).on('scroll', function () {
+    if ($(window).scrollTop() > 0) {
+      $('#admin-nav').addClass('fixed');
+    } else {
+      $('#admin-nav').removeClass('fixed');
+    }
+  });
+  if ($(window).scrollTop() > 0) {
+    $('#admin-nav').addClass('fixed');
+  } else {
+    $('#admin-nav').removeClass('fixed');
+  }
+
+  if ($('.flash-msg').is(":visible")) {
+    setTimeout(fade_out, 20000);
+
+    function fade_out() {
+      $('.flash-msg').fadeOut().empty();
+    }
+  }
+});
 
 function stringParameterize(str1) {
   if (str1.includes("+")) {
