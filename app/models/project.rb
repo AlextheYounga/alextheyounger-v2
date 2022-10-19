@@ -58,42 +58,6 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def assign_color(attribute)
-    colors = {
-      'ruby-on-rails' => {
-        'text' => 'text-red-600',
-        'bg' => 'bg-red-100'
-      },
-      'php-laravel' => {
-        'text' => 'text-blue-600',
-        'bg' => 'bg-blue-100'
-      },
-      'php' => {
-        'text' => 'text-blue-600',
-        'bg' => 'bg-blue-100'
-      },
-      'wordpress' => {
-        'text' => 'text-blue-700',
-        'bg' => 'bg-blue-50'
-      },
-      'python' => {
-        'text' => 'text-yellow-700',
-        'bg' => 'bg-yellow-100'
-      },
-      'net' => {
-        'text' => 'text-gray-700',
-        'bg' => 'bg-gray-200'
-      },
-      'electron-js' => {
-        'text' => 'text-green-700',
-        'bg' => 'bg-green-100'
-      }
-    }
-
-    lang = framework.parameterize
-    colors.dig(lang, attribute).nil? ? '' : colors[lang][attribute]
-  end
-
   private
 
   def resize_screen(cover)
