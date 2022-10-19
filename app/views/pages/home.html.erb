@@ -57,7 +57,7 @@
   <section class="projects-home p-2 sm:p-8 relative mb-8 bg-white border home-content js--fadeInLeft">
     <h3 class="text-3xl text-gray-900 mb-4 fancy-font mx-auto">Projects</h3>
     <div class="overflow-hidden bg-white border shadow sm:rounded-md">
-      <ul role="list" class="divide-y divide-gray-200 overflow-scroll">
+      <ul role="list" id="projects-container" class="divide-y divide-gray-200 overflow-scroll">
         <% if @projects.any? then %>
         <% @projects.each do |project| %>
           <li>
@@ -66,7 +66,7 @@
                 <div class="flex items-center justify-between">
                   <p class="truncate text-lg font-medium text-blue-600 normal-font"><%= project.title %></p>
                   <div class="ml-2 flex flex-shrink-0">
-                    <p class="inline-flex rounded-full <%=project.assign_color('bg')%> px-2 text-xs font-semibold leading-5 <%=project.assign_color('text')%>"><%= project.framework %></p>
+                    <p class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5" data-framework="<%= project.framework %>"><%= project.framework %></p>
                   </div>
                 </div>
                 <div class="mt-2 sm:flex sm:justify-between">
@@ -83,7 +83,7 @@
       <% end %>
       </ul>
     </div>
-  <a href="<%= projects_path %>" class="bg-white border block border border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12">
+  <a href="<%= projects_path %>" class="bg-white border block border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12">
     See More
   </a>
   </section>

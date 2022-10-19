@@ -4,7 +4,7 @@
       <h1 class="sm:text-3xl text-2xl font-medium fancy-font mb-4 text-gray-900">Projects</h1>
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Here are some of my proudest projects, personal and professional.</p>
     </div>
-    <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+    <div id="projects-container" class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
       <% if @projects.any? then %>
         <% @projects.each do |project| %>
 
@@ -38,7 +38,7 @@
           </div>
           <div class="flex flex-1 flex-col justify-between bg-white p-6">
             <div class="flex-1">
-              <p class="inline-flex rounded-full <%=project.assign_color('bg')%> px-2 text-xs font-semibold leading-5 <%=project.assign_color('text')%>">
+              <p class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5" data-framework="<%= project.framework %>">
                 <%= project.framework %>
               </p>
               <a href="<%= project.project_link %>" class="mt-2 block">
@@ -57,7 +57,6 @@
             </div>
           </div>
         </div>
-
         <% end %>
       <% end %>
     </div>
