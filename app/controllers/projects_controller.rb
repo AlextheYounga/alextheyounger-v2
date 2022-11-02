@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
     @project.image_alt = "Alex Younger Projects List #{title} in #{framework}"
 
     if @project.save
-      @project.attach_screen(params)
+      @project.attach_screen(screen)
       @project.reorder_positions
       flash[:notice] = 'Project was successfully created'
       redirect_to projects_path
