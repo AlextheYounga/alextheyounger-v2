@@ -27,6 +27,8 @@ gem 'redis'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
+gem 'pry'
+
 # Asset gems
 gem 'jquery-rails'
 gem 'lazyload-rails'
