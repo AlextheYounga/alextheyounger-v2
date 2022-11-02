@@ -60,8 +60,8 @@ class Project < ActiveRecord::Base
 
   private
 
-  def resize_screen(cover)
-    mini_image = MiniMagick::Image.new(cover.tempfile.path)
+  def resize_screen(screen)
+    mini_image = MiniMagick::Image.new(screen.tempfile.path)
     mini_image.resize "#{mini_image.width}x192"
   end
 end
