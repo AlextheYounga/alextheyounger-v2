@@ -132,7 +132,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     console (1.14.0)
       fiber-local
     crass (1.0.6)
@@ -152,13 +152,13 @@ GEM
       ffi (>= 1.0.0)
       rake
     fiber-local (1.0.0)
-    globalid (0.5.2)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     hirb (0.7.3)
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.11)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_optimizer (1.8.0)
     image_processing (1.12.1)
@@ -198,7 +198,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
-    minitest (5.14.4)
+    minitest (5.17.0)
     msgpack (1.4.2)
     multi_xml (0.6.0)
     nio4r (2.5.8)
@@ -360,7 +360,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.9)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -386,7 +386,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.26)
-    zeitwerk (2.5.1)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
