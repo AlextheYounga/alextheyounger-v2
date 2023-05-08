@@ -42,7 +42,7 @@ gem 'httparty'
 # Image gems
 gem 'carrierwave'
 gem 'carrierwave-imageoptimizer'
-# gem 'webp-ffi'
+gem 'webp-ffi'
 
 # Misc gems
 gem 'colorize'
